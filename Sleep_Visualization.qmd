@@ -49,7 +49,9 @@ Problem 2
 
 library(readxl)
 library(ggplot2)
-df <- read_excel("es193ds_sleep_data.xlsx") #read in sleep data
+library(here)
+path <- here("es193ds_sleep_data.xlsx")
+df <- read_excel(path) #read in sleep data
 
 df$date <- as.Date(df$date)
 df$quality <- factor(df$quality, levels = c('poor', 'good', 'great'))
@@ -70,6 +72,7 @@ p <- ggplot(df, aes(x = date, y = hours, fill = quality)) +
 
 # print plot
 print(p)
+
 ```
 
 2e.
