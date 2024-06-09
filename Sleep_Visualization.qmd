@@ -51,22 +51,22 @@ df <- read_excel("es193ds_sleep_data.xlsx") #read in sleep data
 
 df$date <- as.Date(df$date)
 df$quality <- factor(df$quality, levels = c('poor', 'good', 'great'))
-# Define custom labeller function
+
 custom_labeller <- labeller(
   stress = c(yes = "Stress: Yes", no = "Stress: No"),
   dreams = c(yes = "Dreams: Yes", no = "Dreams: No")
 )
 
-# Create the bar plot using ggplot2 with facet grid and custom labels
+# create a bar plot with labels
 p <- ggplot(df, aes(x = date, y = hours, fill = quality)) +
   geom_bar(stat = "identity", position = "dodge") +
   facet_grid(stress ~ dreams, labeller = custom_labeller) +
-  labs(x = "Date", y = "Hours of Sleep", fill = "Quality") +
+  labs(title = "Sleep Data: Quality, Stress, and Dreams", x = "Date", y = "Hours of Sleep", fill = "Quality") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         strip.text.x = element_text(size = 10, face = "bold"),
         strip.text.y = element_text(size = 10, face = "bold"))
 
-# Print the plot
+# print plot
 print(p)
 ```
 
