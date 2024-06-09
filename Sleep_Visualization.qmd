@@ -7,6 +7,24 @@ editor: visual
 
 ## 
 
-Problem 1.
+Problem 1
+
+1b.
 
 Visualization 1
+
+The main packages used for this visualization were ggplot2, data.table, stringr, ggnewscale, and ggforce; these packages help with data manipulation and cleaning and the final visualization. The ggnewscale and ggforce packages add extra colors and functionality to ggplot2, to create more complex visualizations. The cleaning and summarizing steps start with creating a new ‘Date’ column by combining the ‘Year’ and ‘Month’ columns and converting them into date format. Then, the data is filtered to have rows where ‘HomesPowered’ is greater than 0.The structure of the final data frame has five columns (Year, Date, Month, HoomesPowered, and Name) and rows with trash collection records/observations. The geoms used were geom_point() and geom_smooth(); geom_point() represents individual data points as circular points on the plot which are each 2 units in size and have different colors according to the “Name” variable. Using geom_smooth() adds smooth trend lines to each plot for “HomesPowered” over time, whose colors also vary according to the “Name” variable. There are four final plots in the visualization, each representing a different Trash Wheel.
+
+link: \[<https://github.com/npechl/TidyTuesday/blob/master/R/2024-03-05/2024-03-05_Trash_Wheel_Collection_Data.R>\]
+
+Visualization 2
+
+The main packages used in this visualization are stringr, data.table, ggplot2, ggtext, and ggstream. Using ggplot2, ggtext, and ggstream helps to create a proper streamgraph visualization with better text formatting. The data was loaded and movies were matched to their genres. Then they cleaned by only including movie genres that didn’t have any missing values, and only including data from 1980 and later. The number of genres present every year was counted with ‘dcast()’, and then the data format was changed so it could be plotted. Then, the genres were each given a label (Action, Animation, Comedy, Documentary, etc.), and there were a total of 25 genres that were assigned different colors on the visualization. The final data frame’s structure showed the year, genre, number of movies (of each genre which occured per year), and the label. The geoms used in this visualization were geom_stream(), geom_vline(), and geom_hline(). Using geom_stream() created a streamgraph that showed the distribution of holiday movies according to their year and genre. Vertical lines were added to mark every 5 years using geom_vline(), and geom_hline() created horizontal lines at intervals of 100.
+
+link: \[<https://github.com/npechl/TidyTuesday/blob/master/R/2023-12-12/2023-12-12_Holiday_Movies.R>\]
+
+Visualization 3
+
+This visualization shows people’s preferred coffee strength based on their employment status and age; the main packages used for this visualization are data.table, stringr, ggplot2, ggtext, ggx4h, and paletteer. These packages help with manipulating data and creating a complex visualization with a unique color palette. The file was read in using the fread() function and then the data was grouped by ‘age’, ‘employment_status’, and ‘strength’ and then factor levels were specified for each of these categorical variables. For example, ‘strength’ was divided into “weak, somewhat light, medium, somewhat strong, and very strong.” Lastly, any rows which were missing values were taken out of the data frame. The finalized data frame has columns of ‘age’, ‘employment_status’, ‘strength’, and ‘N’ with rows representing a combination of age, employment_status, and strength with the ‘N’ (count) of occurrences. In the visualization, geom_col was used to create a bar plot that represents ‘N’ for the combinations, and the bars were stacked using “position = ‘fill’”. Different plots were then created using facet_wrap2(), and showed the distribution of people according to their preferred coffee strength and employment status, divided into age groups.
+
+link: \[<https://github.com/npechl/TidyTuesday/blob/master/R/2024-05-14/2024-05-14_The_Great_American_Coffee_Taste_Test.R>\]
