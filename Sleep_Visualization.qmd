@@ -41,6 +41,8 @@ Problem 2
 
 2c. sketch
 
+![](problem2c_sketch.png)
+
 2d.
 
 ```{r}
