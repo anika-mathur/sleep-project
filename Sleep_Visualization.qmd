@@ -19,7 +19,7 @@ The main packages used for this visualization were ggplot2, data.table, stringr,
 
 link: \[<https://github.com/npechl/TidyTuesday/blob/master/R/2024-03-05/2024-03-05_Trash_Wheel_Collection_Data.R>\]
 
-![](visualization 1.png)
+![](visualization_1.png)
 
 Visualization 2
 
@@ -27,7 +27,7 @@ The main packages used in this visualization are stringr, data.table, ggplot2, g
 
 link: \[<https://github.com/npechl/TidyTuesday/blob/master/R/2023-12-12/2023-12-12_Holiday_Movies.R>\]
 
-![](visualization 2.png)
+![](visualization_2.png)
 
 Visualization 3
 
@@ -35,10 +35,39 @@ This visualization shows people’s preferred coffee strength based on their emp
 
 link: \[<https://github.com/npechl/TidyTuesday/blob/master/R/2024-05-14/2024-05-14_The_Great_American_Coffee_Taste_Test.R>\]
 
-![](visualization 3.png)
+![](visualization_3.png)
+
+Problem 2
 
 2c. sketch
 
 2d.
+
+```{r}
+
+library(readxl)
+library(ggplot2)
+df <- read_excel("es193ds_sleep_data.xlsx") #read in sleep data
+
+df$date <- as.Date(df$date)
+df$quality <- factor(df$quality, levels = c('poor', 'good', 'great'))
+# Define custom labeller function
+custom_labeller <- labeller(
+  stress = c(yes = "Stress: Yes", no = "Stress: No"),
+  dreams = c(yes = "Dreams: Yes", no = "Dreams: No")
+)
+
+# Create the bar plot using ggplot2 with facet grid and custom labels
+p <- ggplot(df, aes(x = date, y = hours, fill = quality)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_grid(stress ~ dreams, labeller = custom_labeller) +
+  labs(x = "Date", y = "Hours of Sleep", fill = "Quality") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.text.x = element_text(size = 10, face = "bold"),
+        strip.text.y = element_text(size = 10, face = "bold"))
+
+# Print the plot
+print(p)
+```
 
 2e.
